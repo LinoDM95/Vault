@@ -47,10 +47,10 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
         </div>
         <div className="flex justify-between gap-50 mt-4">
           {copySuccess ? (
-            <ButtonSuccess buttonName="Kopieren" />
+            <ButtonSuccess buttonName="Copy" />
           ) : (
             <ButtonCopyToClipboard
-              buttonName="Kopieren"
+              buttonName="Copy"
               text={dataObj.code}
               onBtnClick={handleCopySuccess}
             />

@@ -4,7 +4,7 @@ import { AuthContext } from "../utils/auth_context";
 import { SnippetContext } from "../utils/snippet_context";
 import PopUpBase from "./bases/pop_up_base";
 import InputNormal from "./ui_elements/input/input_normal";
-
+import ButtonBrand from "./ui_elements/buttons/button_brand";
 /**
  * TODO: DOCU
  */
@@ -52,7 +52,7 @@ const CreateSnippetForm = ({ onClickClose }) => {
 
   return (
     <PopUpBase title="Snippet erstellen" onClick={onClickClose}>
-      {message && <p className="mb-4 text-center">{message}</p>}
+      {message && <p className="mb-4 text-center text-secondary">Something went wrong!</p>}
 
       <form onSubmit={handleSubmit} className="w-150 space-y-4">
         <InputNormal
@@ -84,12 +84,7 @@ const CreateSnippetForm = ({ onClickClose }) => {
           onInputChange={(value) => setFormData({ ...formData, code: value })}
         />
         <div className="flex">
-          <button
-            className="group flex items-center gap-2 px-4 py-2 rounded-full text-white bg-gradient-to-r from-[#0F6CBD] to-blue-900 hover:brightness-75 transition-all duration-300"
-            type="submit"
-          >
-            Speichern
-          </button>
+          <ButtonBrand label="Save"/>
         </div>
       </form>
     </PopUpBase>

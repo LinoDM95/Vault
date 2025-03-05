@@ -119,9 +119,6 @@ const Vault_Snippets = () => {
 
       {snippets.length === 0 ? (
         <div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
           className="flex justify-center items-center h-screen"
         >
           <h1>Keine Einträge gefunden...</h1>

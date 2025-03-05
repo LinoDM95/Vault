@@ -14,8 +14,8 @@ const FormLogin = ({
   return (
     <div className="">
       <FormBase>
-        <p className="relative font-bold text-5xl p- inline-block after:block after:h-1 after:w-full after:bg-gradient-to-r after:from-primary after:to-secondary after:absolute after:left-0 after:bottom-[-8px]">
-          SnippetVault<span className="text-primary">.</span>
+        <p className="relative font-bold text-5xl p- inline-block after:block after:h-1 after:w-full after:bg-gradient-to-r after:bg-primary after:absolute after:left-0 after:bottom-[-8px]">
+          SnippetVault<span className="text-secondary">.</span>
         </p>
         <InputNormal
           label="Benutzername"
