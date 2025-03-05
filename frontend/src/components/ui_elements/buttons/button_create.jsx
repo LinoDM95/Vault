@@ -1,7 +1,7 @@
 import React from "react";
 import { IoAdd } from "react-icons/io5";
 
-const ButtonCreate = ({ buttonName = "Create", onBtnClick, className = "", }) => {
+const ButtonCreate = ({ buttonName, onBtnClick, className = "", }) => {
       /**
    * @param buttonName: Name of the button
    * @param onBtnClick: Add functionality
@@ -10,7 +10,7 @@ const ButtonCreate = ({ buttonName = "Create", onBtnClick, className = "", }) =>
   return (
     <div>
       <button
-        className={`group flex items-center gap-2 px-4 py-2 rounded-full text-text-on-primary border border-text-on-primary hover:brightness-75 transition-all duration-300 cursor-pointer ${className}`}
+        className={`group flex items-center gap-2 rounded-full text-text-on-primary border border-text-on-primary hover:brightness-75 transition-all duration-300 cursor-pointer ${className}`}
         onClick={onBtnClick}
       >
         <IoAdd

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../utils/auth_context";
 import ButtonCreate from "./ui_elements/buttons/button_create";
@@ -11,23 +11,7 @@ import CreateSnippetForm from "./pop_up_create_snippet";
 function Navbar({ navLinks = [] }) {
   const [showSelectMenu, setShowSelectMenu] = useState(false);
   const [showCreateSnippetForm, setShowCreateSnippetForm] = useState(false);
-  const selectMenuRef = useRef(null);
-  const { logout } = useContext(AuthContext)
-  /**
-   * !Open/Close selectMenu
-   */
-  function handleButtonCreate() {
-    setShowSelectMenu((prev) => !prev);
-  }
 
-  const handleCloseSelectMenu = (event) => {
-    if (
-      selectMenuRef.current &&
-      !selectMenuRef.current.contains(event.target)
-    ) {
-      setShowSelectMenu(false);
-    }
-  };
 
   const handleEscapeKey = (event) => {
     if (event.key === "Escape") {
@@ -35,23 +19,13 @@ function Navbar({ navLinks = [] }) {
     }
   };
 
-  useEffect(() => {
-    if (showSelectMenu) {
-      document.addEventListener("mousedown", handleCloseSelectMenu);
-      document.addEventListener("keydown", handleEscapeKey);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleCloseSelectMenu);
-      document.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, [showSelectMenu]);
 
   function handleClosePopUpCreateSnippet() {
     setShowCreateSnippetForm(false);
   }
 
   return (
-    <div>
+    <div className="bg-red-500">
       {showCreateSnippetForm && (
         <CreateSnippetForm
           className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -59,11 +33,9 @@ function Navbar({ navLinks = [] }) {
         />
       )}
 
-      <nav className="flex flex-col items-center mt-6 p-4 text-left bg-gradient-to-b from-primary to-secondary text-text-on-primary rounded-r-4xl h-screen">
-
+      <nav className="flex flex-col items-center p-4 text-left bg-gradient-to-b from-primary to-secondary text-text-on-primary rounded-r-4xl h-screen">
         <div className="mb-7">
           <ButtonCreate
-            buttonName="Erstellen oder hochladen"
             onBtnClick={() => {
               setShowCreateSnippetForm((prev) => !prev);
               setShowSelectMenu(false);
@@ -71,14 +43,13 @@ function Navbar({ navLinks = [] }) {
           />
         </div>
 
-
         <ul className="space-y-3 flex-grow">
           {navLinks.map((link, index) => (
             <li key={link.path || index}>
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 px-4 py-2 rounded-md transition duration-300 ${
+                  `flex items-center justify-center gap-2 rounded-md transition duration-300 ${
                     isActive ? "font-extrabold" : ""
                   }`
                 }
@@ -89,15 +60,7 @@ function Navbar({ navLinks = [] }) {
           ))}
         </ul>
 
-
-        <ul className="mb-20 flex flex-col items-center gap-5">
-          <div className="">
-            <button 
-            className="hover:cursor-pointer"
-            onClick={logout}>Logout</button>
-          </div>
-          <li>Feedback</li>
-        </ul>
+        
       </nav>
     </div>
   );

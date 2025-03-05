@@ -10,7 +10,7 @@ function SnippetTable({ columns, data, rowClick }) {
    */
   return (
     <div className="">
-      <table className="min-w-full shadow-lg rounded-2xl overflow-hidden border border-gray-500">
+      <table className="w-full shadow-lg rounded-2xl overflow-hidden border border-gray-500">
         <thead className="bg-white text-gray-700 uppercase text-sm border-b border-gray-300">
           <th className="px-6 py-3 text-left">Titel</th>
           <th className="px-6 py-3 text-left">Sprache</th>
