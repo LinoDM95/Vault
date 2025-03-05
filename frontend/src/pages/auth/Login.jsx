@@ -37,7 +37,7 @@ const Login = () => {
       sessionStorage.setItem("access", data.access);
       sessionStorage.setItem("refresh", data.refresh);
 
-      window.location.href = "/Vault_Snippets";
+      window.location.href = "/Snippet_Hub";
     } catch (err) {
       setError(err.message);
       console.log(err.message);
@@ -55,7 +55,7 @@ const Login = () => {
         />
         <ButtonLogin buttonName="Anmelden" onBtnClick={handleLogin} />
         {error && (
-          <p style={{ color: "red" }}>Benutzername oder Passwort falsch!</p>
+          <p className="flex items-center justify-center"  style={{ color: "red" }}>Benutzername oder Passwort falsch!</p>
         )}
         <p className="mt-4 text-center">
           Noch nicht registriert? <Link to="/register" className="text-blue-500">Hier registrieren</Link>

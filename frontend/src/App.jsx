@@ -5,8 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Vault_Snippets from "./pages/vault/Vault_Snippets";
-import Vault_Data from "./pages/vault/Vault_Data";
-import Vault_Media from "./pages/vault/Vault_Media";
+import Snippet_Hub from "./pages/vault/Snippet_Hub";
 import Login from "./pages/auth/Login";
 import Registration from "./pages/auth/Registration";
 import Navbar from "./components/navbar";
@@ -56,7 +55,7 @@ const AppLayout = () => {
         {!hideNavbar && (
           <div className="flex-1/2 h-full 0p-4 fixed left-0 top-16">
             <Navbar
-              username={`Willkommen ${user.username}`}
+              username={user ? `Willkommen ${user.username}` : "Guest"}
               navLinks={navLinks}
             />
           </div>
@@ -67,8 +66,7 @@ const AppLayout = () => {
             <Route path="/" element={<Login />} />
             <Route element={<PrivateRoute />}>
               <Route path="/Snippet_Table" element={<Vault_Snippets />} />
-              <Route path="/Vault_Data" element={<Vault_Data />} />
-              <Route path="/Vault_Media" element={<Vault_Media />} />
+              <Route path="/Snippet_Hub" element={<Snippet_Hub />} />
             </Route>
           </Routes>
         </div>

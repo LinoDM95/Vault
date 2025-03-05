@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../utils/auth_context";
 import ButtonCreate from "./ui_elements/buttons/button_create";
 import CreateSnippetForm from "./pop_up_create_snippet";
 
@@ -11,6 +12,7 @@ function Navbar({ navLinks = [] }) {
   const [showSelectMenu, setShowSelectMenu] = useState(false);
   const [showCreateSnippetForm, setShowCreateSnippetForm] = useState(false);
   const selectMenuRef = useRef(null);
+  const { logout } = useContext(AuthContext)
   /**
    * !Open/Close selectMenu
    */
@@ -90,9 +92,10 @@ function Navbar({ navLinks = [] }) {
 
         <ul className="mb-20 flex flex-col items-center gap-5">
           <div className="">
-            <li onClick={console.log("ewqd")}>Logout</li>
+            <button 
+            className="hover:cursor-pointer"
+            onClick={logout}>Logout</button>
           </div>
-
           <li>Feedback</li>
         </ul>
       </nav>

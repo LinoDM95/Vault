@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { motion } from "framer-motion"; // ✅ Importieren
+import { motion } from "framer-motion"; 
 import SnippetTable from "../../components/table_snippet";
 import TableBtnFilter from "../../components/ui_elements/buttons/button_filter_table";
 import PopUpShowSnippet from "../../components/pop_up_show_snippet";

@@ -18,7 +18,7 @@ function Header({}) {
 
       <GlobSearchInput />
       <div>
-        <UserLogo user={user.username} />
+        <UserLogo user={user?.username || "Guest"}  />
       </div>
     </div>
   );
