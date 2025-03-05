@@ -3,8 +3,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../utils/auth_context";
 import { SnippetContext } from "../utils/snippet_context";
 import PopUpBase from "./bases/pop_up_base";
-import InputNormal from "./ui_elements/input_normal";
-import ButtonCreate from "./ui_elements/button_create";
+import InputNormal from "./ui_elements/input/input_normal";
 
 /**
  * TODO: DOCU

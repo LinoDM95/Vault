@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useLayoutEffect } from "react";
 import SnippetTable from "../../components/table_snippet";
-import TableBtnFilter from "../../components/ui_elements/button_filter_table";
+import TableBtnFilter from "../../components/ui_elements/buttons/button_filter_table";
 import PopUpShowSnippet from "../../components/pop_up_show_snippet";
 import { AuthContext } from "../../utils/auth_context";
 import { SnippetContext } from "../../utils/snippet_context";

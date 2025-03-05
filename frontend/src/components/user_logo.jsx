@@ -15,7 +15,7 @@ function UserLogo({ user, onClick }) {
 
   return (
     <div
-      className="text-gray-500 font-semibold rounded-full border flex items-center justify-center w-10 h-10 cursor-pointer"
+      className="text-text-on-primary bg-primary font-semibold rounded-full border flex items-center justify-center w-10 h-10 cursor-pointer"
       onClick={onClick}
     >
       <p>{userTag}</p>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import TextCodeEditor from "./ui_elements/code_editor";
+import TextCodeEditor from "./ui_elements/input/code_editor";
 import PopUpBase from "./bases/pop_up_base";
-import ButtonCopyToClipboard from "./ui_elements/button_copy_to_clipboard";
-import ButtonSuccess from "./ui_elements/button_success";
-import ButtonDelete from "./ui_elements/button_delete";
+import ButtonCopyToClipboard from "./ui_elements/buttons/button_copy_to_clipboard";
+import ButtonSuccess from "./ui_elements/buttons/button_success";
+import ButtonDelete from "./ui_elements/buttons/button_delete";
 import { deleteItem } from "../apis/delete_item";
 import TextAreaNormal from "./ui_elements/textarea_normal";
 

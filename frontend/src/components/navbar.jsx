@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import ButtonCreate from "./ui_elements/button_create";
-import ButtonNoBackground from "./ui_elements/button_no_background";
+import ButtonCreate from "./ui_elements/buttons/button_create";
+import ButtonNoBackground from "./ui_elements/buttons/button_no_background";
 import CreateSnippetForm from "./pop_up_create_snippet";
 import { FaFileCirclePlus } from "react-icons/fa6";
 import { RiScreenshot2Fill } from "react-icons/ri";
 import { PiCodeBold } from "react-icons/pi";
+
+import ButtonAddRoundedFull from "./ui_elements/buttons/button_add_roundedfull";
 
 /**
  * TODO: DOCU
@@ -62,8 +64,9 @@ function Navbar({ username = "Guest", navLinks = [], linkIcons = [] }) {
           />
       )}
 
-      <nav className="mt-6 p-4 text-left">
+      <nav className="mt-6 p-4 text-left bg-primary text-text-on-primary rounded-r-4xl h-screen ">
         <div className="mb-7">
+          <ButtonAddRoundedFull onBtnClick={console.log("!")}/>
           <div className="relative inline-block">
             <ButtonCreate
               buttonName="Erstellen oder hochladen"
@@ -96,7 +99,6 @@ function Navbar({ username = "Guest", navLinks = [], linkIcons = [] }) {
           </div>
         </div>
         <ul className="space-y-3">
-          <h1 className="font-bold px-4 py-2">{username}</h1>
           {navLinks.map((link, index) => (
             <li key={link.path}>
               <NavLink
@@ -104,12 +106,12 @@ function Navbar({ username = "Guest", navLinks = [], linkIcons = [] }) {
                 className={({ isActive }) =>
                   `flex items-center gap-2 px-4 py-2 rounded-md transition duration-300 ${
                     isActive
-                      ? "font-semibold text-blue-900"
-                      : "hover:bg-gray-200"
+                      ? "font-extrabold"
+                      : "hover:bg-secondary"
                   }`
                 }
               >
-                <span>{linkIcons[index]}</span>
+
                 {link.name}
               </NavLink>
             </li>

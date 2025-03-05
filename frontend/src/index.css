@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #7d2ce0;
+  --color-text-on-primary: #ffffff;
+  --color-secondary: #a684ef;
+  --color-outline-ui: #e4d5f8;
+  --color-background-main: #f3f3f3;
+}
+
 /* Gesamte Scrollleiste */
 ::-webkit-scrollbar {
   width: 5px;
@@ -8,18 +16,18 @@
 
 /* Spur (Hintergrund der Scrollleiste) */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #e4d5f8;
 }
 
 /* Daumen (der bewegliche Teil der Scrollleiste) */
 ::-webkit-scrollbar-thumb {
-  background: #949599;
+  background: #7d2ce0;
   border-radius: 5px;
 }
 
 /* Daumen beim Hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #48494b;
+  background: #a684ef;
 }
 
 html {
@@ -27,7 +35,7 @@ html {
 }
 
 body {
-  background-color: #eef0f5;
+  background-color: #f3f3f3;
   color: black;
   font-family: "Roboto", sans-serif;
   margin: 0;
