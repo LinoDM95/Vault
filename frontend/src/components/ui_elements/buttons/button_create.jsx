@@ -10,7 +10,7 @@ const ButtonCreate = ({ buttonName = "Create", onBtnClick }) => {
   return (
     <div>
       <button
-        className="group flex items-center gap-2 px-4 py-2 rounded-full text-white bg-gradient-to-r from-[#0F6CBD] to-blue-900 hover:brightness-75 transition-all duration-300"
+        className="group flex items-center gap-2 px-4 py-2 rounded-full text-white bg-gradient-to-r from-[#0F6CBD] to-blue-900 hover:brightness-75 transition-all duration-300 cursor-pointer"
         onClick={onBtnClick}
       >
         <IoAdd

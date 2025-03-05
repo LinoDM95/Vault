@@ -17,20 +17,9 @@ import { SearchProvider } from "./utils/searchbar_context";
 import PrivateRoute from "./utils/private_route";
 import { useContext } from "react";
 
-import { FaFileCirclePlus } from "react-icons/fa6";
-import { RiScreenshot2Fill } from "react-icons/ri";
-import { PiCodeBold } from "react-icons/pi";
-
-const linkIcons = [
-  <PiCodeBold size={24} />,
-  <RiScreenshot2Fill size={24} />,
-  <FaFileCirclePlus size={24} />,
-];
-
 const navLinks = [
-  { name: "Code Snippets", path: "/Vault_Snippets" },
-  { name: "Datensammlung", path: "/Vault_Data" },
-  { name: "Meidasammlung", path: "/Vault_Media" },
+  { name: "Snippet Hub", path: "/Snippet_Hub" },
+  { name: "Snippet Table", path: "/Snippet_Table" },
 ];
 
 /**
@@ -58,7 +47,7 @@ const AppLayout = () => {
   return (
     <div className="h-screen flex flex-col">
       {!hideHeader && (
-        <div className="w-full h-16 fixed top-0 left-0 z-50 flex items-center px-4 bg-[#eef0f5]">
+        <div className="w-full h-16 fixed top-0 left-0 z-50 flex items-center px-4 bg-background-main/30 backdrop-blur-md backdrop-saturate-150">
           <Header />
         </div>
       )}
@@ -69,7 +58,6 @@ const AppLayout = () => {
             <Navbar
               username={`Willkommen ${user.username}`}
               navLinks={navLinks}
-              linkIcons={linkIcons}
             />
           </div>
         )}
@@ -78,7 +66,7 @@ const AppLayout = () => {
             <Route path="/register" element={<Registration />} />
             <Route path="/" element={<Login />} />
             <Route element={<PrivateRoute />}>
-              <Route path="/Vault_Snippets" element={<Vault_Snippets />} />
+              <Route path="/Snippet_Table" element={<Vault_Snippets />} />
               <Route path="/Vault_Data" element={<Vault_Data />} />
               <Route path="/Vault_Media" element={<Vault_Media />} />
             </Route>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useContext, useLayoutEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { motion } from "framer-motion"; // ✅ Importieren
 import SnippetTable from "../../components/table_snippet";
 import TableBtnFilter from "../../components/ui_elements/buttons/button_filter_table";
 import PopUpShowSnippet from "../../components/pop_up_show_snippet";
@@ -7,7 +8,7 @@ import { SnippetContext } from "../../utils/snippet_context";
 import { SearchContext } from "../../utils/searchbar_context";
 
 /**
- * !filtered language icons
+ * ! Icons für Sprachen importieren
  */
 const importIcons = import.meta.glob("/src/img/*.{svg,png,jpg}", {
   eager: true,
@@ -35,7 +36,7 @@ const Vault_Snippets = () => {
   const [currentSnippetData, setCurrentSnippetData] = useState(null);
 
   /**
-   * ! Fetch & Update Snippets when userData changes
+   * ! Snippets laden, wenn `userData` sich ändert
    */
   useEffect(() => {
     if (userData && userData.snippets) {
@@ -46,13 +47,14 @@ const Vault_Snippets = () => {
   }, [userData]);
 
   /**
-   * ! Filtered keys for table columns
+   * ! Spalten filtern
    */
   const columns = keys.filter(
     (key) => !["id", "code", "description", "user_id"].includes(key)
   );
+
   /**
-   * ! Filter with searchbar
+   * ! Suche in Snippets
    */
   useEffect(() => {
     if (!globSearchField) {
@@ -66,7 +68,7 @@ const Vault_Snippets = () => {
   }, [globSearchField, allSnippets]);
 
   /**
-   * ! Filter available languages
+   * ! Sprachen filtern
    */
   useEffect(() => {
     if (allSnippets.length > 0) {
@@ -115,14 +117,21 @@ const Vault_Snippets = () => {
         />
       )}
 
-      {snippets.length === 0 && (
-        <div className="flex justify-center items-center h-screen">
+      {snippets.length === 0 ? (
+        <div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center items-center h-screen"
+        >
           <h1>Keine Einträge gefunden...</h1>
         </div>
-      )}
-
-      {snippets.length > 0 && (
-        <div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0}}
+          animate={{ opacity: 1}}
+          transition={{ duration: 0.3 }}
+        >
           <TableBtnFilter
             buttons={buttonData}
             onBtnClick={handleTableBtnFilter}
@@ -132,7 +141,7 @@ const Vault_Snippets = () => {
             data={snippets}
             rowClick={handleRowClick}
           />
-        </div>
+        </motion.div>
       )}
     </div>
   );

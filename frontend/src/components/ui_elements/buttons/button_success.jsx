@@ -11,7 +11,7 @@ const ButtonSuccess = ({ buttonName = "Success", onBtnClick }) => {
   return (
     <div>
       <button
-        className="group flex items-center gap-2 px-4 py-2 rounded-full text-white bg-gradient-to-r from-[#7AE582] to-[#1F6B45] hover:brightness-75 transition-all duration-300"
+        className="group flex items-center gap-2 px-4 py-2 rounded-full text-white bg-gradient-to-r from-[#7AE582] to-[#1F6B45] hover:brightness-75 transition-all duration-300 cursor-pointer"
         onClick={onBtnClick}
       >
         <IoIosCheckmarkCircleOutline size={20} />
