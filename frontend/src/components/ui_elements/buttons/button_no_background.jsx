@@ -10,7 +10,7 @@ const ButtonNoBackground = ({ buttonName, img, onBtnClick }) => {
   return (
     <div>
       <button
-        className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-200 transition-all duration-300"
+        className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-200 transition-all duration-300 cursor-pointer"
         onClick={onBtnClick}
       >
         {img && <span>{img}</span>}

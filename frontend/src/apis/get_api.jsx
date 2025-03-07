@@ -3,9 +3,10 @@
  */
 
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
-export const getData = async (url, user_id = "") => {
+export const getData = async (url, user_id = null) => {
   try {
-    const response = await fetch(`${API_URL}/${url}/${user_id}`, {
+    const fullUrl = user_id ? `${API_URL}/${url}/${user_id}` : `${API_URL}/${url}`;
+    const response = await fetch(fullUrl, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -15,7 +16,6 @@ export const getData = async (url, user_id = "") => {
     if (!response.ok) throw new Error("example error");
 
     const data = await response.json();
-    console.log("example message:", data);
 
     return data;
   } catch (error) {

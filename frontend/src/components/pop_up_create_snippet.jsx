@@ -1,14 +1,10 @@
-//TODO: Refactor !!!
 import { useState, useContext } from "react";
 import { AuthContext } from "../utils/auth_context";
 import { SnippetContext } from "../utils/snippet_context";
 import PopUpBase from "./bases/pop_up_base";
-import InputNormal from "./ui_elements/input_normal";
-import ButtonCreate from "./ui_elements/button_create";
-
-/**
- * TODO: DOCU
- */
+import InputNormal from "./ui_elements/input/input_normal";
+import ButtonBrand from "./ui_elements/buttons/button_brand";
+import TextCodeEditor from "./ui_elements/input/code_editor";
 
 const CreateSnippetForm = ({ onClickClose }) => {
   const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
@@ -22,6 +18,7 @@ const CreateSnippetForm = ({ onClickClose }) => {
     description: "",
     code: "",
   });
+
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -52,18 +49,18 @@ const CreateSnippetForm = ({ onClickClose }) => {
   };
 
   return (
-    <PopUpBase title="Snippet erstellen" onClick={onClickClose}>
-      {message && <p className="mb-4 text-center">{message}</p>}
+    <PopUpBase title="Create Your Snippet" onClick={onClickClose}>
+      {message && <p className="mb-4 text-center text-secondary">{message}</p>}
 
-      <form onSubmit={handleSubmit} className="w-150 space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 w-200">
         <InputNormal
-          label="Titel"
+          label="Title"
           name="title"
           inputValue={formData.title}
           onInputChange={(value) => setFormData({ ...formData, title: value })}
         />
         <InputNormal
-          label="Sprache"
+          label="Language"
           name="language"
           inputValue={formData.language}
           onInputChange={(value) =>
@@ -71,92 +68,26 @@ const CreateSnippetForm = ({ onClickClose }) => {
           }
         />
         <InputNormal
-          label="Beschreibung"
+          label="Description"
           name="description"
           inputValue={formData.description}
           onInputChange={(value) =>
             setFormData({ ...formData, description: value })
           }
         />
-        <InputNormal
+
+        <TextCodeEditor
           label="Code"
-          name="code"
-          inputValue={formData.code}
-          onInputChange={(value) => setFormData({ ...formData, code: value })}
+          language={formData.language || "javascript"}
+          code={formData.code}
+          onChange={(value) => setFormData({ ...formData, code: value })}
         />
+
         <div className="flex">
-          <button
-            className="group flex items-center gap-2 px-4 py-2 rounded-full text-white bg-gradient-to-r from-[#0F6CBD] to-blue-900 hover:brightness-75 transition-all duration-300"
-            type="submit"
-          >
-            Speichern
-          </button>
+          <ButtonBrand label="Save Snippet" />
         </div>
       </form>
     </PopUpBase>
-    /*
-    <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Neues Snippet erstellen</h2>
-
-      {message && <p className="mb-4 text-center">{message}</p>}
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-gray-700 font-semibold">Titel:</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-gray-700 font-semibold">Sprache:</label>
-          <input
-            type="text"
-            name="language"
-            value={formData.language}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-gray-700 font-semibold">
-            Beschreibung:
-          </label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
-        </div>
-
-        <div>
-          <label className="block text-gray-700 font-semibold">Code:</label>
-          <textarea
-            name="code"
-            value={formData.code}
-            onChange={handleChange}
-            className="w-full border p-2 rounded font-mono"
-            required
-          />
-        </div>
-        <div className="flex">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Speichern
-          </button>
-        </div>
-      </form>
-    </div>*/
   );
 };
 

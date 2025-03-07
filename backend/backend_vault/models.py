@@ -9,6 +9,10 @@ class Snippet(models.Model):
     description = models.TextField(blank=True, null=True) 
     code = models.TextField(blank=False, null=False)  
     created_at = models.DateField(auto_now_add=True)
+    is_public = models.BooleanField(default=False)
+    
+    saved_by = models.ManyToManyField(User, related_name="saved_snippets", blank=True)
 
     def __str__(self):
         return self.title
+    

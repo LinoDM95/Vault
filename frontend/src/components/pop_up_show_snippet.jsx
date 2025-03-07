@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import TextCodeEditor from "./ui_elements/code_editor";
+import TextCodeEditor from "./ui_elements/input/code_editor";
 import PopUpBase from "./bases/pop_up_base";
-import ButtonCopyToClipboard from "./ui_elements/button_copy_to_clipboard";
-import ButtonSuccess from "./ui_elements/button_success";
-import ButtonDelete from "./ui_elements/button_delete";
+import ButtonCopyToClipboard from "./ui_elements/buttons/button_copy_to_clipboard";
+import ButtonSuccess from "./ui_elements/buttons/button_success";
+import ButtonDelete from "./ui_elements/buttons/button_delete";
 import { deleteItem } from "../apis/delete_item";
+import TextAreaNormal from "./ui_elements/textarea_normal";
 
 /**
  * TODO: DOCU
  */
-
 
 function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
   /**
@@ -23,7 +23,7 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
       console.log("sfwsafs");
     }
   }
- 
+
   const handleDeleteSnippet = async (id) => {
     try {
       await deleteItem(dataObj.id);
@@ -36,34 +36,28 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
 
   return (
     <PopUpBase title={dataObj.title} onClick={onClick}>
-      <div>
+      <div className="w-200 h-auto">
+        <TextAreaNormal label="Language" inputValue={dataObj.language} />
+        <TextAreaNormal label="Description" inputValue={dataObj.description} />
+
         <div>
-          <h1 className="font-bold mb-2">Beschreibung:</h1>
-          <p className="text-lg leading-relaxed max-w-2xl">
-            {dataObj.language}
-          </p>
-        </div>
-        <div>
-          <h1 className="font-bold mb-2">Beschreibung:</h1>
-          <p className="text-lg leading-relaxed max-w-2xl">
-            {dataObj.description}
-          </p>
-        </div>
-        <div>
-          <h1 className="font-bold mb-2">Code:</h1>
-          <TextCodeEditor language={dataObj.language} code={dataObj.code} />
+          <TextCodeEditor
+            language={dataObj.language}
+            code={dataObj.code}
+            label="Code"
+          />
         </div>
         <div className="flex justify-between gap-50 mt-4">
           {copySuccess ? (
-            <ButtonSuccess buttonName="Kopieren" />
+            <ButtonSuccess buttonName="Copy Code" />
           ) : (
             <ButtonCopyToClipboard
-              buttonName="Kopieren"
+              buttonName="Copy Code"
               text={dataObj.code}
               onBtnClick={handleCopySuccess}
             />
           )}
-          <ButtonDelete buttonName="Löschen" onBtnClick={handleDeleteSnippet} />
+          <ButtonDelete buttonName="" onBtnClick={handleDeleteSnippet} />
         </div>
       </div>
     </PopUpBase>

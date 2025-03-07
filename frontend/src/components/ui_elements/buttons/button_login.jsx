@@ -3,7 +3,7 @@ import { CiLogin } from "react-icons/ci";
 import { IoLogIn } from "react-icons/io5";
 
 const ButtonLogin = ({ buttonName = "Login", onBtnClick }) => {
-    /**
+  /**
    * @param buttonName: Name of the button
    * @param onBtnClick: Add functionality
    */
@@ -11,7 +11,7 @@ const ButtonLogin = ({ buttonName = "Login", onBtnClick }) => {
   return (
     <div>
       <button
-        className="group flex items-center justify-center w-full gap-2 px-4 py-2 rounded-full text-white bg-gradient-to-r from-[#0F6CBD] to-blue-900 hover:brightness-75 transition-all duration-300"
+        className="group flex items-center justify-center w-full gap-2 px-4 py-2 rounded-full text-white bg-primary hover:brightness-75 transition-all duration-300 cursor-pointer"
         onClick={onBtnClick}
       >
         <span className="group-hover:hidden transition-all duration-300">

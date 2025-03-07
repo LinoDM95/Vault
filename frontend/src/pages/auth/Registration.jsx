@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import FormRegistration from "../../components/form_registration";
-import ButtonRegister from "../../components/ui_elements/button_registration";
+import ButtonRegister from "../../components/ui_elements/buttons/button_registration";
 import { createUser } from "../../apis/create_user";
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
