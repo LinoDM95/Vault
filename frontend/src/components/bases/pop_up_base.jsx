@@ -7,11 +7,11 @@ const PopUpBase = ({ title = "", children = null, onClick }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
-      className="w-full fixed inset-0 flex justify-center items-center "
+      className=" fixed inset-0 flex justify-center items-center "
       onClick={onClick}
     >
       <div
-        className=" max-w-3xl bg-white border-1 border-primary p-6 rounded-2xl shadow-lg"
+        className=" bg-white border-1 border-primary p-6 rounded-2xl shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-4">

@@ -11,7 +11,6 @@ import TextAreaNormal from "./ui_elements/textarea_normal";
  * TODO: DOCU
  */
 
-
 function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
   /**
    * Generic code showcase popup window:
@@ -24,7 +23,7 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
       console.log("sfwsafs");
     }
   }
- 
+
   const handleDeleteSnippet = async (id) => {
     try {
       await deleteItem(dataObj.id);
@@ -37,13 +36,16 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
 
   return (
     <PopUpBase title={dataObj.title} onClick={onClick}>
-      <div>
-
-          <TextAreaNormal label="Language" inputValue={dataObj.language}/>
-          <TextAreaNormal label="Description" inputValue={dataObj.description}/>
+      <div className="w-200 h-auto">
+        <TextAreaNormal label="Language" inputValue={dataObj.language} />
+        <TextAreaNormal label="Description" inputValue={dataObj.description} />
 
         <div>
-          <TextCodeEditor language={dataObj.language} code={dataObj.code} label="Code" />
+          <TextCodeEditor
+            language={dataObj.language}
+            code={dataObj.code}
+            label="Code"
+          />
         </div>
         <div className="flex justify-between gap-50 mt-4">
           {copySuccess ? (

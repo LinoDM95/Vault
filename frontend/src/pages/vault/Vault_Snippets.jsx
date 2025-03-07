@@ -114,11 +114,13 @@ const Vault_Snippets = () => {
         <h2 className="text-2xl">checkout your snippets.</h2>
       </div>
       {isOpenPopUpShowSnippet && (
-        <PopUpShowSnippet
-          dataObj={currentSnippetData}
-          onClick={handleClosePopUpShowSnippet}
-          refreshSnippets={refreshSnippets}
-        />
+        <div className="">
+          <PopUpShowSnippet
+            dataObj={currentSnippetData}
+            onClick={handleClosePopUpShowSnippet}
+            refreshSnippets={refreshSnippets}
+          />
+        </div>
       )}
 
       {snippets.length === 0 ? (

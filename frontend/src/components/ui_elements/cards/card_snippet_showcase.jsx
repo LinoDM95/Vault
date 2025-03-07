@@ -7,16 +7,17 @@ const CardSnippetShowCase = ({
   language = "Example Language",
   onBtnClick,
 }) => {
+
   return (
     <div className="relative flex flex-col my-6 bg-white rounded-lg w-96">
       <div className="flex relative h-56 m-2.5 overflow-hidden text-black rounded-full items-center justify-center ">
-        <h1 className="font-bold text-2xl border-1 rounded-full p-30">
+        <h1 className="font-bold border-1 rounded-full p-30 text-2xl">
           {user}
         </h1>
       </div>
       <div className="p-4">
-        <h6 className="text-slate-800 text-xl font-bold">
-          {title.length > 50 ? title.slice(0, 50) + "..." : title}
+        <h6 className="text-slate-800 text-xl font-bold ">
+          {title.length > 30 ? title.slice(0, 30) + "..." : title}
         </h6>
         <div className="flex items-center mb-4">
           <p className="text-secondary font-semibold">{language}</p>
@@ -40,8 +41,8 @@ const CardSnippetShowCase = ({
         </div>
         <div className="flex flex-col gap-5">
           <p className="text-slate-600 font-light">
-            {description.length > 120
-              ? description.slice(0, 120) + "..."
+            {description.length > 40
+              ? description.slice(0, 40) + "..."
               : description}
           </p>
           <ButtonBrand label="Open Snippet" onBtnClick={onBtnClick} />

@@ -10,12 +10,14 @@ function UserLogo({
   let userTag = "?";
 
   if (words.length > 0) {
-    const firstInitial = words[0][0]?.toUpperCase() || "";
-    const lastInitial =
-      words.length > 1 ? words[words.length - 1][0]?.toUpperCase() : "";
-
-    userTag = lastInitial ? firstInitial + lastInitial : firstInitial;
+    const word = words[0]; 
+    const firstInitial = word[0].toUpperCase();
+    const lastMiddle = word[1].toUpperCase(); 
+    //const lastInitial = word[2].toUpperCase(); 
+  
+    userTag = firstInitial + lastMiddle; //+ lastInitial;
   }
+  
 
   return (
     <div
