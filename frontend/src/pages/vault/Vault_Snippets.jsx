@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import SnippetTable from "../../components/table_snippet";
 import TableBtnFilter from "../../components/ui_elements/buttons/button_filter_table";
 import PopUpShowSnippet from "../../components/pop_up_show_snippet";
@@ -109,6 +109,10 @@ const Vault_Snippets = () => {
 
   return (
     <div>
+      <div className="flex flex-col text-primary">
+        <h1 className="text-6xl font-bold">Welcome {user.username},</h1>
+        <h2 className="text-2xl">checkout your snippets.</h2>
+      </div>
       {isOpenPopUpShowSnippet && (
         <PopUpShowSnippet
           dataObj={currentSnippetData}
@@ -118,15 +122,13 @@ const Vault_Snippets = () => {
       )}
 
       {snippets.length === 0 ? (
-        <div
-          className="flex justify-center items-center h-screen"
-        >
+        <div className="flex justify-center items-center h-screen">
           <h1>Keine Einträge gefunden...</h1>
         </div>
       ) : (
         <motion.div
-          initial={{ opacity: 0}}
-          animate={{ opacity: 1}}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
           <TableBtnFilter

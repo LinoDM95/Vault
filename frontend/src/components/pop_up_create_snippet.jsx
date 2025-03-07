@@ -51,18 +51,18 @@ const CreateSnippetForm = ({ onClickClose }) => {
   };
 
   return (
-    <PopUpBase title="Snippet erstellen" onClick={onClickClose}>
+    <PopUpBase title="Create Your Snippet" onClick={onClickClose}>
       {message && <p className="mb-4 text-center text-secondary">Something went wrong!</p>}
 
       <form onSubmit={handleSubmit} className="w-150 space-y-4">
         <InputNormal
-          label="Titel"
+          label="Title"
           name="title"
           inputValue={formData.title}
           onInputChange={(value) => setFormData({ ...formData, title: value })}
         />
         <InputNormal
-          label="Sprache"
+          label="Language"
           name="language"
           inputValue={formData.language}
           onInputChange={(value) =>
@@ -70,7 +70,7 @@ const CreateSnippetForm = ({ onClickClose }) => {
           }
         />
         <InputNormal
-          label="Beschreibung"
+          label="Description"
           name="description"
           inputValue={formData.description}
           onInputChange={(value) =>
@@ -84,7 +84,7 @@ const CreateSnippetForm = ({ onClickClose }) => {
           onInputChange={(value) => setFormData({ ...formData, code: value })}
         />
         <div className="flex">
-          <ButtonBrand label="Save"/>
+          <ButtonBrand label="Save Snippet"/>
         </div>
       </form>
     </PopUpBase>

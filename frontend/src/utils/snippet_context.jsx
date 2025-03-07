@@ -34,6 +34,7 @@ export const SnippetProvider = ({ children }) => {
     fetchSnippets();
   };
 
+
   return (
     <SnippetContext.Provider value={{ userData, refreshSnippets }}>
       {children}

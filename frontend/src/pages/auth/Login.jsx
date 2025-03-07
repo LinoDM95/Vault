@@ -8,11 +8,16 @@ const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
  * TODO: DOCU
  */
 
-
 const Login = () => {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [error, setError] = useState("");
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleLogin(event);
+    }
+  };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -37,7 +42,7 @@ const Login = () => {
       sessionStorage.setItem("access", data.access);
       sessionStorage.setItem("refresh", data.refresh);
 
-      window.location.href = "/Snippet_Hub";
+      window.location.href = "/Snippet_Table";
     } catch (err) {
       setError(err.message);
       console.log(err.message);
@@ -52,13 +57,22 @@ const Login = () => {
           setUsernameValue={setUsernameValue}
           passwordValue={passwordValue}
           setPasswordValue={setPasswordValue}
+          onKeyDown={handleKeyDown}
         />
         <ButtonLogin buttonName="Anmelden" onBtnClick={handleLogin} />
         {error && (
-          <p className="flex items-center justify-center"  style={{ color: "red" }}>Benutzername oder Passwort falsch!</p>
+          <p
+            className="flex items-center justify-center"
+            style={{ color: "red" }}
+          >
+            Benutzername oder Passwort falsch!
+          </p>
         )}
         <p className="mt-4 text-center">
-          Noch nicht registriert? <Link to="/register" className="text-blue-500">Hier registrieren</Link>
+          Noch nicht registriert?{" "}
+          <Link to="/register" className="text-blue-500">
+            Hier registrieren
+          </Link>
         </p>
       </div>
     </div>

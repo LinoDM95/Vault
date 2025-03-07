@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 import GlobSearchInput from "./ui_elements/input/input_glob";
 import UserLogo from "./user_logo";
-import ButtonBurger from "./ui_elements/buttons/button_burger";
 import ButtonCreate from "./ui_elements/buttons/button_create";
 import CreateSnippetForm from "./pop_up_create_snippet";
+import NavlinkHeader from "./ui_elements/navlinks/navlink_header";
 /**
  * TODO: DOCU
  */
@@ -16,10 +16,6 @@ function Header({}) {
   const { user } = useContext(AuthContext);
   const [isOpenNav, setIsOpenNav] = useState(false);
   const { logout } = useContext(AuthContext);
-  const navLinks = [
-    { name: "Snippet Hub", path: "/Snippet_Hub" },
-    { name: "Snippet Table", path: "/Snippet_Table" },
-  ];
 
   const [showCreateSnippetForm, setShowCreateSnippetForm] = useState(false);
 
@@ -37,43 +33,17 @@ function Header({}) {
       )}
       {isOpenNav && (
         <motion.div
-  className="grid grid-cols-3 absolute top-full right-0 bg-gradient-to-b from-primary to-secondary text-text-on-primary rounded-b-4xl shadow-lg p-10 z-50"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.2 }}
->
-  {/* Button */}
-  <div className="col-start-1 flex flex-col items-center justify-center mb-10">
-    <ButtonCreate onBtnClick={() => setShowCreateSnippetForm((prev) => !prev)} />
-  </div>
-
-  {/* Trennstrich */}
-  <div className=" col-start-2 w-px bg-gray-400 h-full mx-10" />
-
-  {/* Navigation */}
-  <ul className="col-start-1 flex flex-col items-center justify-center space-y-3">
-    {navLinks.map((link, index) => (
-      <li key={link.path || index}>
-        <NavLink
-          to={link.path}
-          className={({ isActive }) =>
-            `flex items-center justify-center gap-2 rounded-md transition duration-300 ${
-              isActive ? "font-extrabold" : ""
-            }`
-          }
+          className="flex absolute top-full right-0 bg-primary text-text-on-primary rounded-b-4xl shadow-lg p-10 z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
         >
-          {link.name}
-        </NavLink>
-      </li>
-    ))}
-  </ul>
-<div className="col-start-3">
-<button onClick={logout} className="cursor-pointer">Logout</button>
-
-</div>
-
-</motion.div>
-
+          <div className="col-start-3 flex flex-col gap-3">
+            <button onClick={logout} className="cursor-pointer hover:text-secondary transition-all duration-300">
+              Logout
+            </button>
+          </div>
+        </motion.div>
       )}
 
       <div className="flex items-center gap-4 ">
@@ -83,9 +53,25 @@ function Header({}) {
       </div>
 
       <GlobSearchInput />
-      <div className="flex items-center gap-5">
-        <UserLogo user={user?.username || "Guest"} />
-        <ButtonBurger onBtnClick={() => setIsOpenNav((prev) => !prev)} />
+      <div className="flex items-center gap-5 ">
+        <nav className="flex gap-6">
+          <NavlinkHeader
+            title="Snippet Table"
+            navigationLink="/Snippet_Table"
+          />
+          <NavlinkHeader title="Snippet Hub" navigationLink="/Snippet_Hub" />
+        </nav>
+
+        <ButtonCreate
+          onBtnClick={() => setShowCreateSnippetForm((prev) => !prev)}
+          buttonName="Create Snippet"
+        />
+
+        <UserLogo
+          onClick={() => setIsOpenNav((prev) => !prev)}
+          user={user?.username || "Guest"}
+          className="text-text-on-primary bg-primary border-secondary hover:text-secondary border w-10 h-10 cursor-pointer"
+        />
       </div>
     </div>
   );

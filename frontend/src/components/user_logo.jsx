@@ -1,6 +1,10 @@
 import React from "react";
 
-function UserLogo({ user, onClick }) {
+function UserLogo({ 
+  user, 
+  onClick,
+  className = "", 
+}) {
   const words = user ? user.trim().split(/\s+/) : [];
 
   let userTag = "?";
@@ -15,7 +19,7 @@ function UserLogo({ user, onClick }) {
 
   return (
     <div
-      className="text-text-on-primary bg-primary font-semibold rounded-full border flex items-center justify-center w-10 h-10 cursor-pointer"
+      className={`${className} font-semibold rounded-full flex items-center justify-center transition-all duration-300`}
       onClick={onClick}
     >
       <p>{userTag}</p>

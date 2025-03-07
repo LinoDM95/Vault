@@ -10,12 +10,12 @@ const ButtonCreate = ({ buttonName, onBtnClick, className = "", }) => {
   return (
     <div>
       <button
-        className={`group flex items-center gap-2 rounded-full text-text-on-primary border border-text-on-primary hover:brightness-75 transition-all duration-300 cursor-pointer ${className}`}
+        className={`group flex items-center gap-2 px-4 py-1 rounded-full text-text-on-primary border border-secondary hover:brightness-75 transition-all duration-300 cursor-pointer ${className}`}
         onClick={onBtnClick}
       >
         <IoAdd
           size={24}
-          className="text-white transition-transform duration-300 group-hover:rotate-90"
+          className="text-white transition-transform duration-300 group-hover:rotate-90 group-hover:text-secondary "
         />
         {buttonName}
       </button>

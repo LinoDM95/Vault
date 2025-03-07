@@ -39,18 +39,18 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
     <PopUpBase title={dataObj.title} onClick={onClick}>
       <div>
 
-          <TextAreaNormal label="Sprache" inputValue={dataObj.language}/>
-          <TextAreaNormal label="Beschreibung" inputValue={dataObj.description}/>
+          <TextAreaNormal label="Language" inputValue={dataObj.language}/>
+          <TextAreaNormal label="Description" inputValue={dataObj.description}/>
 
         <div>
           <TextCodeEditor language={dataObj.language} code={dataObj.code} label="Code" />
         </div>
         <div className="flex justify-between gap-50 mt-4">
           {copySuccess ? (
-            <ButtonSuccess buttonName="Copy" />
+            <ButtonSuccess buttonName="Copy Code" />
           ) : (
             <ButtonCopyToClipboard
-              buttonName="Copy"
+              buttonName="Copy Code"
               text={dataObj.code}
               onBtnClick={handleCopySuccess}
             />
