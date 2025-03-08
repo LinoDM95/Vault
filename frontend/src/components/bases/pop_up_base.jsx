@@ -7,7 +7,7 @@ const PopUpBase = ({ title = "", children = null, onClick }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
-      className=" fixed inset-0 flex justify-center items-center z-50"
+      className=" fixed inset-0 flex justify-center items-center z-50 bg-black/50"
       onClick={onClick}
     >
       <div
