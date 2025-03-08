@@ -1,21 +1,30 @@
 import React from "react";
-import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 
-const ButtonToggle = ({ onBtnClick, isActive = false, className = "" }) => {
+const ButtonToggle = ({
+  onBtnClick,
+  isActive = false,
+  isDeactivated = false,
+  className = "",
+}) => {
+  // Wenn isDeactivated true ist, sollen andere Hintergrundfarben ignoriert werden.
+  const bgColor = isDeactivated
+    ? "bg-gray-400"
+    : isActive
+    ? "bg-secondary"
+    : "bg-white";
+
   return (
     <button
-      onClick={onBtnClick}
-      className={`relative flex items-center w-16 h-7 rounded-full border-2 hover:cursor-pointer ${
-        isActive ? "bg-secondary" : "bg-white"
-      } ${className}`}
+      onClick={isDeactivated ? undefined : onBtnClick}
+      disabled={isDeactivated}
+      className={`relative flex items-center w-16 h-7 rounded-full border-2 hover:cursor-pointer 
+        transition-all duration-300 ${bgColor} ${className}`}
     >
       <div
-        className={`absolute w-6 h-6 rounded-full shadow-md 
+        className={`absolute w-6 h-6 rounded-full shadow-md bg-primary
           transition-all duration-300 
-          
-          ${
-            isActive ? "translate-x-9 bg-primary" : "translate-x-0 bg-primary"
-          }`}
+          ${isDeactivated ? "translate-x-0" : isActive ? "translate-x-9" : "translate-x-0"}
+          `}
       ></div>
     </button>
   );

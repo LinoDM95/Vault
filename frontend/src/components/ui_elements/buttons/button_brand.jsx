@@ -8,10 +8,11 @@ const ButtonBrand = ({
   colorText = "text-primary",
   label,
   type = "",
+  className,
 }) => {
   return (
     <button
-      className={`flex items-center justify-center border-1 ${colorText} ${colorBorder} ${colorBackground} rounded-full cursor-pointer px-5 py-1 font-semibold hover:text-text-on-primary hover:bg-primary hover:border-secondary transition-all duration-300`}
+      className={` ${className} flex items-center justify-center border-1 ${colorText} ${colorBorder} ${colorBackground} rounded-full cursor-pointer px-5 py-1 font-semibold hover:text-text-on-primary hover:bg-primary hover:border-secondary transition-all duration-300`}
       onClick={onBtnClick}
       type={type}
     >

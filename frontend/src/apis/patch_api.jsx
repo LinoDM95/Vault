@@ -15,6 +15,7 @@ export const PatchAPI = async (url, data) => {
     if (!response.ok) throw new Error("example error");
 
     const responseData = await response.json();
+
     return responseData;
     console.log(responseData);
   } catch (error) {

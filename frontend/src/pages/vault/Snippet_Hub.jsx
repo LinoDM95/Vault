@@ -4,13 +4,16 @@ import CardSnippetShowCase from "../../components/ui_elements/cards/card_snippet
 import UserLogo from "../../components/user_logo";
 import { getData } from "../../apis/get_api";
 
+import PopUpShowSnippetPublic from "../../components/pop_up_layouts/pop_up_show_snippet_public";
+
 const Snippet_Hub = () => {
   const [publicData, setPublicData] = useState([]);
+  const [visibleSnippetId, setVisibleSnippetId] = useState(null);
 
   const fetchSnippets = async () => {
     try {
       const data = await getData("get-all-snippets");
-      console.log(data)
+      console.log(data);
       if (data) {
         setPublicData(data.snippets);
       }
@@ -23,7 +26,6 @@ const Snippet_Hub = () => {
     fetchSnippets();
   }, []);
 
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,6 +37,7 @@ const Snippet_Hub = () => {
         <h1 className="text-6xl font-bold">User Snippet Collection</h1>
         <h2 className="text-2xl">Explore and share code snippets.</h2>
       </div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -42,13 +45,31 @@ const Snippet_Hub = () => {
         className="flex flex-wrap gap-3 items-center justify-center "
       >
         {publicData.map((snippet) => (
-          <CardSnippetShowCase
-            key={snippet.id}
-            user={<UserLogo user={snippet.user__username} className="w-20 h-20 text-6xl"/>}
-            title={snippet.title}
-            description={snippet.description}
-            language={snippet.language}
-          />
+          <div key={snippet.id} className="relative">
+            {" "}
+            <div className="relative z-30">
+              <CardSnippetShowCase
+                user={
+                  <UserLogo
+                    user={snippet.user__username}
+                    className="w-20 h-20 text-6xl"
+                  />
+                }
+                title={snippet.title}
+                description={snippet.description}
+                language={snippet.language}
+                onBtnClick={() => setVisibleSnippetId(snippet.id)}
+              />
+            </div>
+            {visibleSnippetId === snippet.id && (
+              <div className="absolute inset-0 z-50">
+                <PopUpShowSnippetPublic
+                  dataObj={snippet}
+                  onClick={() => setVisibleSnippetId(null)}
+                />
+              </div>
+            )}
+          </div>
         ))}
       </motion.div>
     </motion.div>

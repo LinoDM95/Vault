@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { PatchAPI } from "../apis/patch_api";
 import ButtonToggle from "./ui_elements/buttons/button_toggle";
 import { SnippetContext } from "../utils/snippet_context";
+import { AuthContext } from "../utils/auth_context";
 
 function SnippetTable({ columns, data, rowClick }) {
   const { refreshSnippets } = useContext(SnippetContext);
+  const { user } = useContext(AuthContext);
 
   async function togglePublicStatus(snippet) {
     try {
@@ -48,6 +50,7 @@ function SnippetTable({ columns, data, rowClick }) {
                     }}
                     className={``}
                     isActive={row.is_public}
+                    isDeactivated={row.user_id != user.id}
                   />
                 ) : (
                   row[column]
