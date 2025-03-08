@@ -18,7 +18,7 @@ const ButtonToggle = ({
       onClick={isDeactivated ? undefined : onBtnClick}
       disabled={isDeactivated}
       className={`relative flex items-center w-16 h-7 rounded-full border-2 hover:cursor-pointer 
-        transition-all duration-300 ${bgColor} ${className}`}
+        transition-all duration-300 ${bgColor} ${className} `}
     >
       <div
         className={`absolute w-6 h-6 rounded-full shadow-md bg-primary

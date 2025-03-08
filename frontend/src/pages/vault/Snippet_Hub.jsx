@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { motion } from "framer-motion";
 import CardSnippetShowCase from "../../components/ui_elements/cards/card_snippet_showcase";
 import UserLogo from "../../components/user_logo";
 import { getData } from "../../apis/get_api";
-
+import { SearchContext } from "../../utils/searchbar_context";
 import PopUpShowSnippetPublic from "../../components/pop_up_layouts/pop_up_show_snippet_public";
 
 const Snippet_Hub = () => {
   const [publicData, setPublicData] = useState([]);
   const [visibleSnippetId, setVisibleSnippetId] = useState(null);
 
+  const { globSearchField } = useContext(SearchContext);
+
   const fetchSnippets = async () => {
     try {
       const data = await getData("get-all-snippets");
-      console.log(data);
-      if (data) {
+      if (data && data.snippets) {
         setPublicData(data.snippets);
       }
     } catch (error) {
@@ -25,6 +26,20 @@ const Snippet_Hub = () => {
   useEffect(() => {
     fetchSnippets();
   }, []);
+
+  const filteredData = publicData.filter((snippet) => {
+    const search = globSearchField.toLowerCase();
+    return (
+      snippet.title?.toLowerCase().includes(search) ||
+      snippet.language?.toLowerCase().includes(search) ||
+      snippet.description?.toLowerCase().includes(search) ||
+      snippet.user__username?.toLowerCase().includes(search)
+    );
+  });
+
+  const sortedData = [...filteredData].sort((a, b) =>
+    a.language.localeCompare(b.language)
+  );
 
   return (
     <motion.div
@@ -42,11 +57,10 @@ const Snippet_Hub = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="flex flex-wrap gap-3 items-center justify-center "
+        className="flex flex-wrap gap-3 items-center justify-center"
       >
-        {publicData.map((snippet) => (
+        {sortedData.map((snippet) => (
           <div key={snippet.id} className="relative">
-            {" "}
             <div className="relative z-30">
               <CardSnippetShowCase
                 user={

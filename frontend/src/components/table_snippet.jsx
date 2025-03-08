@@ -24,43 +24,48 @@ function SnippetTable({ columns, data, rowClick }) {
   }
 
   return (
-    <table className="w-full rounded-2xl overflow-hidden ">
-      <thead className="bg-white text-gray-700 uppercase text-sm border-b border-gray-300">
-        <tr>
-          <th className="px-6 py-3 text-left">Title</th>
-          <th className="px-6 py-3 text-left">Language</th>
-          <th className="px-6 py-3 text-left">Created at</th>
-          <th className="px-6 py-3 text-left">is public</th>
-        </tr>
-      </thead>
-      <tbody className="divide-y divide-gray-200 bg-white">
-        {data.map((row, rowIndex) => (
-          <tr
-            key={rowIndex}
-            onClick={() => rowClick && rowClick(row)}
-            className="hover:bg-gray-100 cursor-pointer"
-          >
-            {columns.map((column) => (
-              <td key={`${rowIndex}-${column}`} className="px-6 py-4">
-                {column === "is_public" ? (
-                  <ButtonToggle
-                    onBtnClick={(e) => {
-                      e.stopPropagation();
-                      togglePublicStatus(row);
-                    }}
-                    className={``}
-                    isActive={row.is_public}
-                    isDeactivated={row.user_id != user.id}
-                  />
-                ) : (
-                  row[column]
-                )}
-              </td>
-            ))}
+    <div className="overflow-x-scroll rounded-lg shadow-lg ">
+      <table className="border-separate border-spacing-0 w-full">
+        <thead className="bg-primary text-white uppercase text-sm">
+          <tr>
+            <th className="px-6 py-3 text-left">Title</th>
+            <th className="px-6 py-3 text-left">Language</th>
+            <th className="px-6 py-3 text-left">Created at</th>
+            <th className="px-6 py-3 text-left">is public</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-100">
+          {data.map((row, rowIndex) => (
+            <tr
+              key={rowIndex}
+              onClick={() => rowClick && rowClick(row)}
+              className="hover:bg-gray-50 transition-colors cursor-pointer"
+            >
+              {columns.map((column) => (
+                <td
+                  key={`${rowIndex}-${column}`}
+                  className="px-6 py-4 text-gray-800"
+                >
+                  {column === "is_public" ? (
+                    <ButtonToggle
+                      onBtnClick={(e) => {
+                        e.stopPropagation();
+                        togglePublicStatus(row);
+                      }}
+                      className={``}
+                      isActive={row.is_public}
+                      isDeactivated={row.user_id != user.id}
+                    />
+                  ) : (
+                    row[column]
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

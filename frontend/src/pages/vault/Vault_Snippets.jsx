@@ -108,7 +108,7 @@ const Vault_Snippets = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       <div className="flex flex-col text-primary">
         <h1 className="text-6xl font-bold">Welcome {user.username},</h1>
         <h2 className="text-2xl">checkout your snippets.</h2>
@@ -132,11 +132,13 @@ const Vault_Snippets = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
+          className="flex flex-col gap-1"
         >
           <TableBtnFilter
             buttons={buttonData}
             onBtnClick={handleTableBtnFilter}
           />
+
           <SnippetTable
             columns={columns}
             data={snippets}

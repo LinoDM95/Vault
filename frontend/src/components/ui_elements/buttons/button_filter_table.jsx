@@ -22,22 +22,19 @@ const TableBtnFilter = ({ buttons = [], onBtnClick }) => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap gap-2">
       {buttons.map((btn, index) => (
         <button
           key={index}
-          className={`px-4 py-2 mx-2 my-6 space-x-2 rounded-full border flex items-center font-semibold cursor-pointer 
-            ${
-              active === btn.title
-                ? "border-2 border-primary bg-outline-ui"
-                : "border-gray-300 hover:bg-gray-300 transition-all duration-300"
-            }`}
+          className={`px-4 py-2 rounded-lg flex items-center gap-1 ${
+            active === btn.title
+              ? "bg-primary text-secondary"
+              : "border border-gray-300 hover:bg-gray-200 transition-all duration-300"
+          }`}
           onClick={() => checkButtonClick(btn.title)}
         >
-          {btn.icon && (
-            <img src={btn.icon} alt={btn.title} className="w-6 h-6" />
-          )}
-          <span>{btn.title}</span>
+          {btn.icon && <img src={btn.icon} alt={btn.title} className="w-5 h-5" />}
+          {btn.title}
         </button>
       ))}
     </div>

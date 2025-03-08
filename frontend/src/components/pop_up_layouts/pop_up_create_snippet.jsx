@@ -51,8 +51,7 @@ const CreateSnippetPopUp = ({ onClickClose }) => {
   return (
     <PopUpBase title="Create Your Snippet" onClick={onClickClose}>
       {message && <p className="mb-4 text-center text-secondary">{message}</p>}
-
-      <form onSubmit={handleSubmit} className="space-y-4 w-200">
+      <form onSubmit={handleSubmit} className="space-y-4 md:w-200 relative ">
         <InputNormal
           label="Title"
           name="title"
@@ -84,7 +83,7 @@ const CreateSnippetPopUp = ({ onClickClose }) => {
         />
 
         <div className="flex">
-          <ButtonBrand label="Save Snippet" className={"w-full"}/>
+          <ButtonBrand label="Save Snippet" className={"w-full"} />
         </div>
       </form>
     </PopUpBase>
