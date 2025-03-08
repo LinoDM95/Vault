@@ -2,12 +2,14 @@ from django.http import JsonResponse
 from django.views import View
 from django.db.models import Q
 from backend_vault.models import Snippet
-
+from rest_framework.permissions import IsAuthenticated
 
 class GetAllSnippets(View):
     """
     Get all snippets and filter by user_id if provided.
     """
+    
+    permission_classes = [IsAuthenticated]
     def get(self, request, *args, **kwargs):
         id = kwargs.get("id", None)  
 

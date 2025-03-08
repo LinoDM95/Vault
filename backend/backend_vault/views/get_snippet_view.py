@@ -2,7 +2,6 @@ from django.http import JsonResponse
 from django.views import View
 from backend_vault.models import Snippet
 
-
 class GetSnippet(View):
     """
     Get a snippet with the id
