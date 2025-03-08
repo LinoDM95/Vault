@@ -44,7 +44,7 @@ const AppLayout = () => {
       ^
       <div>
 
-        <div className={`pt-15 mx-48`}>
+        <div className={`pt-15  md:mx-48`}>
           <Routes>
             <Route path="/register" element={<Registration />} />
             <Route path="/" element={<Login />} />

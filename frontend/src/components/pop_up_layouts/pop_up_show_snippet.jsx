@@ -36,7 +36,7 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
 
   return (
     <PopUpBase title={dataObj.title} onClick={onClick}>
-      <div className="w-200 h-auto">
+      <div className="md:w-200 h-auto">
         <TextAreaNormal label="Language" inputValue={dataObj.language} />
         <TextAreaNormal label="Description" inputValue={dataObj.description} />
 

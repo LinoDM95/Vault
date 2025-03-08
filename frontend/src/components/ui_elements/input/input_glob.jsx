@@ -6,7 +6,7 @@ function GlobSearchInput() {
   const { globSearchField, setGlobSearchField } = useContext(SearchContext);
 
   return (
-    <div className="relative w-full max-w-md">
+    <div className="relative w-30 sm:w-50 md:w-90 lg:w-full max-w-md">
       <input
         value={globSearchField}
         onChange={(e) => setGlobSearchField(e.target.value)}
