@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "../utils/auth_context";
-import { SnippetContext } from "../utils/snippet_context";
-import PopUpBase from "./bases/pop_up_base";
-import InputNormal from "./ui_elements/input/input_normal";
-import ButtonBrand from "./ui_elements/buttons/button_brand";
-import TextCodeEditor from "./ui_elements/input/code_editor";
+import { AuthContext } from "../../utils/auth_context";
+import { SnippetContext } from "../../utils/snippet_context";
+import PopUpBase from "../bases/pop_up_base";
+import InputNormal from "../ui_elements/input/input_normal";
+import ButtonBrand from "../ui_elements/buttons/button_brand";
+import TextCodeEditor from "../ui_elements/input/code_editor";
 
-const CreateSnippetForm = ({ onClickClose }) => {
+const CreateSnippetPopUp = ({ onClickClose }) => {
   const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
   const { user } = useContext(AuthContext);
   const { refreshSnippets } = useContext(SnippetContext);
@@ -84,11 +84,11 @@ const CreateSnippetForm = ({ onClickClose }) => {
         />
 
         <div className="flex">
-          <ButtonBrand label="Save Snippet" />
+          <ButtonBrand label="Save Snippet" className={"w-full"}/>
         </div>
       </form>
     </PopUpBase>
   );
 };
 
-export default CreateSnippetForm;
+export default CreateSnippetPopUp;

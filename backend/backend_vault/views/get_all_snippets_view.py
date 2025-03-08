@@ -8,7 +8,6 @@ class GetAllSnippets(View):
     """
     Get all snippets and filter by user_id if provided.
     """
-
     def get(self, request, *args, **kwargs):
         id = kwargs.get("id", None)  
 

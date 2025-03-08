@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import GlobSearchInput from "./ui_elements/input/input_glob";
 import UserLogo from "./user_logo";
 import ButtonCreate from "./ui_elements/buttons/button_create";
-import CreateSnippetForm from "./pop_up_create_snippet";
+import CreateSnippetPopUp from "./pop_up_layouts/pop_up_create_snippet";
 import NavlinkHeader from "./ui_elements/navlinks/navlink_header";
 /**
  * TODO: DOCU
@@ -26,7 +26,7 @@ function Header({}) {
   return (
     <div className="flex items-center justify-between w-full relative">
       {showCreateSnippetForm && (
-        <CreateSnippetForm
+        <CreateSnippetPopUp
           className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           onClickClose={handleClosePopUpCreateSnippet}
         />
@@ -39,7 +39,10 @@ function Header({}) {
           transition={{ duration: 0.2 }}
         >
           <div className="col-start-3 flex flex-col gap-3">
-            <button onClick={logout} className="cursor-pointer hover:text-secondary transition-all duration-300">
+            <button
+              onClick={logout}
+              className="cursor-pointer hover:text-secondary transition-all duration-300"
+            >
               Logout
             </button>
           </div>
