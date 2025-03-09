@@ -1,0 +1,14 @@
+{% load vite %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Für Entwicklung sorgt das Plugin automatisch für HMR (http://localhost:5173) -->
+  <!-- Im Produktionsmodus werden die manifest.json-Einträge verwendet -->
+  {% vite 'src/main.jsx' %}
+  <!-- Falls du die Pfade abkürzen willst, kannst du STATIC_LOOKUP etc. anpassen -->
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

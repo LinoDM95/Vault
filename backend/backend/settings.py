@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     "backend_vault",
     'corsheaders',
+    'django_vite_plugin',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'dist',   # <-- Hier liegt jetzt dein Vite-Build
+]
+DJANGO_VITE_PLUGIN = {
+    #'DEV_MODE': DEBUG,
+    "DEV_MODE": False,
+    'BUILD_DIR': 'dist',
+    'MANIFEST': 'dist/.vite/manifest.json',
+    'BUILD_URL_PREFIX': STATIC_URL,
+    'STATIC_LOOKUP': False,  # Fügt automatisch "static/<app_name>" hinzu
+    'JS_ATTRS': {'type': 'module'},
+    'CSS_ATTRS': {'rel': 'stylesheet', 'type': 'text/css'},
+}
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
