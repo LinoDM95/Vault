@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
+    'rest_framework_simplejwt',
     "backend_vault",
     'corsheaders',
 ]
@@ -133,14 +134,20 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOW_CREDENTIALS = True  
+ 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  
-    "https://app.deine-domain.com", 
+    "http://localhost:5173",
+    "https://app.deine-domain.com",
+    "http://127.0.0.1:8000",
 ]
+CORS_ALLOW_CREDENTIALS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 
-CSRF_COOKIE_HTTPONLY = False  
-CSRF_COOKIE_SECURE = True  
-CSRF_COOKIE_SAMESITE = "Lax"  
+
 

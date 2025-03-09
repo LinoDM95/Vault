@@ -1,73 +1,75 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Vault_Snippets from "./pages/vault/Vault_Snippets";
-import Vault_Data from "./pages/vault/Vault_Data";
-import Vault_Media from "./pages/vault/Vault_Media";
-import Navbar from "./components/navbar";
-import { FaFileCirclePlus } from "react-icons/fa6";
-import { RiScreenshot2Fill } from "react-icons/ri";
-import { PiCodeBold } from "react-icons/pi";
+import Snippet_Hub from "./pages/vault/Snippet_Hub";
+import Login from "./pages/auth/Login";
+import Registration from "./pages/auth/Registration";
 
-const linkIcons = [
-  <PiCodeBold size={24} />,
-  <RiScreenshot2Fill size={24} />,
-  <FaFileCirclePlus size={24} />,
-];
-const navLinks = [
-  { name: "Code Snippets", path: "/" },
-  { name: "Datensammlung", path: "/Vault_Data" },
-  { name: "Meidasammlung", path: "/Vault_Media" },
-];
+import Header from "./components/header";
+import { AuthProvider, AuthContext } from "./utils/auth_context";
+import { SnippetProvider } from "./utils/snippet_context";
+import { SearchProvider } from "./utils/searchbar_context";
+import PrivateRoute from "./utils/private_route";
+import { useContext } from "react";
 
-const App = () => {
-  /** 
-   * 
-   * 
-  const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
-  const [snippets, setSnippets] = useState([]);
 
-  async function fetchSnippets() {
 
-    try {
-      const response = await fetch(`${API_URL}/get-all-snippets/`);
-      if (response.ok) {
-        const data = await response.json();
-        setSnippets(data.snippets);
-        setAllSnippets(data.snippets);
-        setKeys(data.keys);
-      }
-    } catch (error) {
-      console.error("fetch snippets went wrong", error);
-    }
+/**
+ *
+ * TODO: DOCU
+ */
+
+const AppLayout = () => {
+  const location = useLocation();
+  const { user, loading } = useContext(AuthContext);
+  const hideHeader =
+    location.pathname === "/" ||
+    location.pathname.toLowerCase() === "/register";
+ 
+  if (loading) {
+    return <p style={{ textAlign: "center", marginTop: "20px" }}>...</p>;
   }
 
-  useEffect(() => {
-    fetchSnippets();
-  }, []);
-
-  const refreshSnippets = () => {
-    fetchSnippets();
-  };
-  */
-
   return (
-    <div className="flex h-screen">
-      <Router>
-        <div className="w-64">
-          <Navbar
-            username="Lino De Marco"
-            navLinks={navLinks}
-            linkIcons={linkIcons}
-          />
+    <div className="h-screen flex flex-col">
+      {!hideHeader && (
+        <div className="w-screen h-16 fixed top-0 left-0 z-50 flex items-center px-4 bg-primary">
+          <Header />
         </div>
-        <div className="flex-1 p-4 overflow-y-auto">
+      )}
+      ^
+      <div>
+
+        <div className={`pt-15  md:mx-48`}>
           <Routes>
-            <Route path="/" element={<Vault_Snippets />} />
-            <Route path="/Vault_Data" element={<Vault_Data />} />
-            <Route path="/Vault_Media" element={<Vault_Media />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/" element={<Login />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/Snippet_Table" element={<Vault_Snippets />} />
+              <Route path="/Snippet_Hub" element={<Snippet_Hub />} />
+            </Route>
           </Routes>
         </div>
-      </Router>
+      </div>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <SnippetProvider>
+        <SearchProvider>
+          <Router>
+            <AppLayout />
+          </Router>
+        </SearchProvider>
+      </SnippetProvider>
+    </AuthProvider>
   );
 };
 

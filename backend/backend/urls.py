@@ -17,11 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import backend_vault.views as views
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("get-snippet/", views.GetSnippet.as_view(), name="get-snippet"),
-    path("get-all-snippets/", views.GetAllSnippets.as_view(), name="get-all-snippets"),
+    path("get-all-snippets/", views.GetAllSnippets.as_view(), name="get-all-snippets"), # without user_id
+    path("get-all-snippets/<int:id>/", views.GetAllSnippets.as_view(), name="get-all-snippets-id"), # with user_id
     path("create-snippet/", views.CreateSnippetView.as_view(), name="create-snippet"),
+    path('create-saved-by/<int:snippet_id>/', views.CreateSavedByAPIView.as_view(), name='create-saved-by'),
     path('delete-item/<int:id>/', views.DeleteItemView.as_view(), name='delete-item'),
+    path("update-snippet/", views.SnippetUpdateView.as_view(), name="update-snippet"),
+    path("api/user/", views.GetUserData.as_view(), name="user-data"),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path("create-user/", views.CreateUser.as_view(), name="create-user"),
     ]

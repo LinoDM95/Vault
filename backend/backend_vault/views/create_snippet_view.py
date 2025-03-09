@@ -4,11 +4,11 @@ from rest_framework import status
 from backend_vault.models import Snippet
 from backend_vault.serializers import CreateSnippetSerializer
 
-
 class CreateSnippetView(APIView):
   """
   View to create a snippet and use the serializer for model validation
   """
+  
   def post(self, request):
     serializer = CreateSnippetSerializer(data=request.data)
     

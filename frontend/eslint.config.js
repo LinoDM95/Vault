@@ -33,4 +33,11 @@ export default [
       "no-undef": "off", 
     },
   },
+  {
+    settings: {
+      react: {
+        version: "detect"
+      }
+    }
+  }
 ];
