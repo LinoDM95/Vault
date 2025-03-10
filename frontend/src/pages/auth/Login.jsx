@@ -58,14 +58,6 @@ const Login = () => {
           onKeyDown={handleKeyDown}
         />
         <ButtonLogin buttonName="Log In" onBtnClick={handleLogin} />
-        {error && (
-          <p
-            className="flex items-center justify-center"
-            style={{ color: "red" }}
-          >
-            Incorrect username or password
-          </p>
-        )}
         <p className="mt-4 text-center">
           Not registered yet?{" "}
           <Link to="/register" className="text-blue-500">
