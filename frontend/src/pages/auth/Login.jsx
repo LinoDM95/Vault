@@ -11,7 +11,7 @@ const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 const Login = () => {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -41,11 +41,9 @@ const Login = () => {
       const data = await response.json();
       sessionStorage.setItem("access", data.access);
       sessionStorage.setItem("refresh", data.refresh);
-
       window.location.href = "/Snippet_Table";
     } catch (err) {
-      setError(err.message);
-      console.log(err.message);
+      setErrorMessage("Something went wrong during login!");
     }
   };
 
@@ -73,6 +71,7 @@ const Login = () => {
           <Link to="/register" className="text-blue-500">
             Sign up here
           </Link>
+          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         </p>
       </div>
     </div>

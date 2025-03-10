@@ -22,7 +22,7 @@ const Registration = () => {
         window.location.href = "/";
       }
     } catch (error) {
-      setErrorMessage("Registration went wrong!");
+      setErrorMessage("Something went wrong during registration!");
     }
   }
 
