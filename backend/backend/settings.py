@@ -27,10 +27,8 @@ SECRET_KEY = 'django-insecure-puuo#y2m*mng4^+yu1e5(gv&z%2v06c-%-%ksqihr0yf@&)geg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ['vault-kvgo.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
