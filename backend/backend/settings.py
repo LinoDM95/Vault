@@ -160,6 +160,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://app.deine-domain.com",
     "http://127.0.0.1:8000",
+    "https://vault-kvgo.onrender.com",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
