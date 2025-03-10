@@ -14,14 +14,7 @@ const ButtonDelete = ({ buttonName = "", onBtnClick }) => {
  hover:brightness-75 transition-all duration-300 cursor-pointer"
         onClick={onBtnClick}
       >
-        <MdDeleteOutline
-          size={20}
-          className="group-hover:hidden transition-all duration-300"
-        />
-        <MdDeleteForever
-          size={20}
-          className="hidden group-hover:inline transition-all duration-300"
-        />
+
         {buttonName}
       </button>
     </div>

@@ -6,7 +6,7 @@ import ButtonSuccess from "../ui_elements/buttons/button_success";
 import ButtonDelete from "../ui_elements/buttons/button_delete";
 import { deleteItem } from "../../apis/delete_item";
 import TextAreaNormal from "../ui_elements/textarea_normal";
-
+import ButtonBrand from "../ui_elements/buttons/button_brand"
 /**
  * TODO: DOCU
  */
@@ -47,7 +47,7 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
             label="Code"
           />
         </div>
-        <div className="flex justify-between gap-50 mt-4">
+        <div className="flex justify-end gap-5 mt-4">
           {copySuccess ? (
             <ButtonSuccess buttonName="Copy Code" />
           ) : (
@@ -57,7 +57,7 @@ function PopUpShowSnippet({ dataObj, onClick, refreshSnippets }) {
               onBtnClick={handleCopySuccess}
             />
           )}
-          <ButtonDelete buttonName="" onBtnClick={handleDeleteSnippet} />
+          <ButtonBrand label="Delete" onBtnClick={handleDeleteSnippet} />
         </div>
       </div>
     </PopUpBase>

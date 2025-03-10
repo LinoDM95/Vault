@@ -42,7 +42,7 @@ function PopUpShowSnippetPublic({ dataObj, onClick }) {
             label="Code"
           />
         </div>
-        <div className="flex flex-col sm:flex-row justify-between gap-50 mt-4">
+        <div className="flex flex-col sm:flex-row justify-end gap-5 mt-4">
           {copySuccess ? (
             <ButtonSuccess buttonName="Copy Code" />
           ) : (

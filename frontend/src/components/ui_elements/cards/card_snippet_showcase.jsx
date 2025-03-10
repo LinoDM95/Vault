@@ -18,7 +18,7 @@ const CardSnippetShowCase = ({
       </div>
       <div className="p-6">
         <h6 className="text-gray-900 text-xl font-bold mb-2">
-          {title.length > 30 ? title.slice(0, 30) + "..." : title}
+          {title.length > 25 ? title.slice(0, 25) + "..." : title}
         </h6>
         <div className="flex items-center mb-4">
           <p className="text-secondary font-semibold">{language}</p>
