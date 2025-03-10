@@ -140,26 +140,18 @@ STATICFILES_DIRS = [
 #     BASE_DIR / 'dist',  
 # ]
 
+
+
 DJANGO_VITE_PLUGIN = {
-    "DEV_MODE": False,  # Da du Produktion verwendest
-    'BUILD_DIR': BASE_DIR / "backend" / "dist",  # Falls Vite in backend/dist generiert
-    'MANIFEST': BASE_DIR / "backend" / "dist" / ".vite" / "manifest.json",
+    #'DEV_MODE': DEBUG,
+    "DEV_MODE": False,
+    'BUILD_DIR': 'dist',
+    'MANIFEST': 'dist/.vite/manifest.json',
     'BUILD_URL_PREFIX': STATIC_URL,
-    'STATIC_LOOKUP': False,  # Verhindert automatische Pfad-Suche
+    'STATIC_LOOKUP': False,  # Fügt automatisch "static/<app_name>" hinzu
     'JS_ATTRS': {'type': 'module'},
     'CSS_ATTRS': {'rel': 'stylesheet', 'type': 'text/css'},
 }
-
-# DJANGO_VITE_PLUGIN = {
-#     #'DEV_MODE': DEBUG,
-#     "DEV_MODE": False,
-#     'BUILD_DIR': 'dist',
-#     'MANIFEST': 'dist/.vite/manifest.json',
-#     'BUILD_URL_PREFIX': STATIC_URL,
-#     'STATIC_LOOKUP': False,  # Fügt automatisch "static/<app_name>" hinzu
-#     'JS_ATTRS': {'type': 'module'},
-#     'CSS_ATTRS': {'rel': 'stylesheet', 'type': 'text/css'},
-# }
 
 
 # Default primary key field type
