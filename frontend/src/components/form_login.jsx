@@ -18,13 +18,13 @@ const FormLogin = ({
           SnippetVault<span className="text-secondary">.</span>
         </p>
         <InputNormal
-          label="Benutzername"
+          label="Username"
           inputValue={usernameValue}
           onInputChange={setUsernameValue}
         />
         <InputNormal
           type="password"
-          label="Passwort"
+          label="Password"
           inputValue={passwordValue}
           onInputChange={setPasswordValue}
         />

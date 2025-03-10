@@ -16,16 +16,16 @@ const FormRegistration = ({
     <div className="">
       <FormBase>
         <p className="relative font-bold text-5xl p- inline-block after:block after:h-1 after:w-full after:bg-gradient-to-r after:bg-primary after:absolute after:left-0 after:bottom-[-8px]">
-          Registrieren
+          Registration
         </p>
         <InputNormal
-          label="Benutzername"
+          label="Username"
           inputValue={usernameValue}
           onInputChange={setUsernameValue}
         />
         <InputNormal
           type="password"
-          label="Passwort"
+          label="Password"
           inputValue={passwordValue}
           onInputChange={setPasswordValue}
         />

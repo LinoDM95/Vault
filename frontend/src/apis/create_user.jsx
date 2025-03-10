@@ -16,6 +16,7 @@ export const createUser = async (registerData) => {
 
     const data = await response.json();
     console.log("User creation succeeded:", data);
+    return data;
   } catch (error) {
     console.error("Error:", error.message);
     throw error;

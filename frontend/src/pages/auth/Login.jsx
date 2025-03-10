@@ -59,19 +59,19 @@ const Login = () => {
           setPasswordValue={setPasswordValue}
           onKeyDown={handleKeyDown}
         />
-        <ButtonLogin buttonName="Anmelden" onBtnClick={handleLogin} />
+        <ButtonLogin buttonName="Log In" onBtnClick={handleLogin} />
         {error && (
           <p
             className="flex items-center justify-center"
             style={{ color: "red" }}
           >
-            Benutzername oder Passwort falsch!
+            Incorrect username or password
           </p>
         )}
         <p className="mt-4 text-center">
-          Noch nicht registriert?{" "}
+          Not registered yet?{" "}
           <Link to="/register" className="text-blue-500">
-            Hier registrieren
+            Sign up here
           </Link>
         </p>
       </div>
