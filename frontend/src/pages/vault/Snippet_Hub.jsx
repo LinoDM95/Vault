@@ -25,6 +25,12 @@ const Snippet_Hub = () => {
 
   useEffect(() => {
     fetchSnippets();
+
+    const interval = setInterval(() => {
+      fetchSnippets();
+    }, 600000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const filteredData = publicData.filter((snippet) => {

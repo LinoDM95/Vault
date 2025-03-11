@@ -38,9 +38,9 @@ echo "🗄 Führe Datenbank-Migrationen durch..."
 python manage.py migrate
 
 # Falls ein Superuser erstellt werden soll, führe es aus
-if [[ $CREATE_SUPERUSER ]]; then
-  echo "👤 Erstelle Superuser..."
-  python manage.py createsuperuser --no-input --email "$DJANGO_SUPERUSER_EMAIL"
+if [[$CREATE_SUPERUSER]];
+then
+  python manage.py createsuperuser --no-input
 fi
 
 echo "✅ Build abgeschlossen!"
