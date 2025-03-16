@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -o errexit 
+set -o errexit
 
 echo "🚀 Starte den Build-Prozess..."
 
@@ -10,6 +10,10 @@ cd frontend
 rm -rf node_modules
 
 yarn install --frozen-lockfile
+
+# Fügen Sie diesen Schritt hinzu, um @babel/runtime zu installieren
+echo "🔧 Installiere @babel/runtime..."
+yarn add @babel/runtime
 
 echo "⚙️ Baue das Frontend..."
 yarn build
