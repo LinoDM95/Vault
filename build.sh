@@ -11,7 +11,6 @@ rm -rf node_modules
 
 yarn install --frozen-lockfile
 
-# Fügen Sie diesen Schritt hinzu, um @babel/runtime zu installieren
 echo "🔧 Installiere @babel/runtime..."
 yarn add @babel/runtime
 
