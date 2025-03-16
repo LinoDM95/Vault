@@ -16,8 +16,6 @@ import { SearchProvider } from "./utils/searchbar_context";
 import PrivateRoute from "./utils/private_route";
 import { useContext } from "react";
 
-
-
 /**
  *
  * TODO: DOCU
@@ -29,7 +27,7 @@ const AppLayout = () => {
   const hideHeader =
     location.pathname === "/" ||
     location.pathname.toLowerCase() === "/register";
- 
+
   if (loading) {
     return <p style={{ textAlign: "center", marginTop: "20px" }}>...</p>;
   }
@@ -43,8 +41,7 @@ const AppLayout = () => {
       )}
       ^
       <div>
-
-        <div className={`pt-15  md:mx-48`}>
+        <div className={`pt-15  md:mx-20`}>
           <Routes>
             <Route path="/register" element={<Registration />} />
             <Route path="/" element={<Login />} />
