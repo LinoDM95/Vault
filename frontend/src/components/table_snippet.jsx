@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useContext } from "react";
 import { PatchAPI } from "../apis/patch_api";
 import ButtonToggle from "./ui_elements/buttons/button_toggle";
@@ -13,17 +13,18 @@ function SnippetTable({ columns, data, rowClick }) {
     try {
       const updatedSnippet = { ...snippet, is_public: !snippet.is_public };
       const response = await PatchAPI("update-snippet/", updatedSnippet);
-      console.log("response:", response)
       if (response) {
-        console.log("if response (refresh):", response)
         refreshSnippets();
       } else {
-        console.error("Fehler beim Update");
+        console.error(error);
       }
     } catch (error) {
-      console.error("Fehler in togglePublicStatus:", error);
+      console.error(error);
     }
   }
+  const sortedData = useMemo(() => {
+    return [...data].sort((a, b) => a.id - b.id);
+  }, [data]);
 
   return (
     <div className="overflow-x-scroll rounded-lg shadow-lg ">
@@ -37,7 +38,7 @@ function SnippetTable({ columns, data, rowClick }) {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-100">
-          {data.map((row, rowIndex) => (
+          {sortedData.map((row, rowIndex) => (
             <tr
               key={rowIndex}
               onClick={() => rowClick && rowClick(row)}
