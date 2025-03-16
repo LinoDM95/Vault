@@ -13,7 +13,9 @@ function SnippetTable({ columns, data, rowClick }) {
     try {
       const updatedSnippet = { ...snippet, is_public: !snippet.is_public };
       const response = await PatchAPI("update-snippet/", updatedSnippet);
+      console.log("response:", response)
       if (response) {
+        console.log("if response (refresh):", response)
         refreshSnippets();
       } else {
         console.error("Fehler beim Update");
