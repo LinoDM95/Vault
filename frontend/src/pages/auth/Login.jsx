@@ -48,8 +48,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-col w-100">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <div className="flex flex-col w-full max-w-md">
         <FormLogin
           usernameValue={usernameValue}
           setUsernameValue={setUsernameValue}
