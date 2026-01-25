@@ -1,7 +1,4 @@
-/// <reference types="vitest/config" />
-
-
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 
@@ -16,8 +13,6 @@ export default defineConfig({
   build: {
     outDir: "../backend/dist",
     manifest: true,
-    rollupOptions: {
-      input: "./src/main.jsx",
-    },
+    rollupOptions: { input: "./src/main.jsx" },
   },
 });
